@@ -1,0 +1,11 @@
+{
+  "_note": "Placeholder roster used by the eval set and injected into the extraction prompt. Replace with your real team before Phase 1, but keep these ids stable while running the Phase 0 eval — the gold labels in utterances.jsonl reference them.",
+  "people": [
+    { "id": "arjun",   "name": "Arjun Mehta",  "aliases": ["arjun"],           "role": "Senior Engineer", "relationship": "reportee" },
+    { "id": "priya",   "name": "Priya Nair",   "aliases": ["priya"],           "role": "Engineer",        "relationship": "reportee" },
+    { "id": "rahul",   "name": "Rahul S",      "aliases": ["rahul"],           "role": "Engineer",        "relationship": "reportee" },
+    { "id": "deepa",   "name": "Deepa K",      "aliases": ["deepa"],           "role": "QA Lead",         "relationship": "reportee" },
+    { "id": "sanjay",  "name": "Sanjay Rao",   "aliases": ["sanjay"],          "role": "Director",        "relationship": "manager" },
+    { "id": "kavitha", "name": "Kavitha Iyer", "aliases": ["kavitha", "kavi"], "role": "Product Manager", "relationship": "peer" }
+  ]
+}
