@@ -1,0 +1,14 @@
+# eval run artifacts — conclusions go in spike/RESULTS.md
+eval/predictions-*.jsonl
+
+# Swift build output
+.build/
+.swiftpm/
+*.xcodeproj
+
+# model weights never belong in git
+*.gguf
+*.mlmodelc/
+
+.DS_Store
+__pycache__/

@@ -1,0 +1,35 @@
+# GBNF grammar for the task-extraction schema (llama.cpp constrained decoding).
+# Guarantees structurally valid JSON with fixed key order and closed enums for
+# urgency. Person fields stay generic strings here; person-id enums are enforced
+# by the prompt in Phase 0. The app (Phase 1) templates the live people list
+# into `personid` at runtime for a fully closed grammar.
+
+root ::= "{" ws "\"tasks\"" ws ":" ws "[" ws task (ws "," ws task)* ws "]" ws "}"
+
+task ::= "{" ws
+  "\"title\"" ws ":" ws string "," ws
+  "\"description\"" ws ":" ws (string | null) "," ws
+  "\"owner\"" ws ":" ws string "," ws
+  "\"urgency\"" ws ":" ws urgency "," ws
+  "\"due\"" ws ":" ws (date | null) "," ws
+  "\"effort_minutes\"" ws ":" ws int "," ws
+  "\"waiting_on\"" ws ":" ws (string | null) "," ws
+  "\"discuss_with\"" ws ":" ws (string | null) "," ws
+  "\"confidence\"" ws ":" ws confidence ws
+"}"
+
+urgency ::= "\"fire\"" | "\"scheduled\"" | "\"small\""
+
+date ::= "\"" digit digit digit digit "-" digit digit "-" digit digit "\""
+
+int ::= digit | [1-9] digit | [1-9] digit digit | [1-9] digit digit digit
+
+confidence ::= ("0" | "1") ("." digit digit?)?
+
+string ::= "\"" char* "\""
+char ::= [^"\\] | "\\" (["\\/bfnrt] | "u" hex hex hex hex)
+
+null ::= "null"
+digit ::= [0-9]
+hex ::= [0-9a-fA-F]
+ws ::= [ \t\n]*

@@ -1,0 +1,78 @@
+{
+  "$schema_note": "Model catalog consumed by ModelManager. Adding a model = adding an entry here, never code. sha256 values are null until first verified download during the Phase 0 spike — record the digest of the verified artifact, then ModelManager enforces it on every subsequent download. size_bytes are approximate until then too.",
+  "catalog_version": 1,
+  "models": [
+    {
+      "id": "parakeet-tdt-0.6b-v3-coreml",
+      "display_name": "Parakeet TDT 0.6B v3 (CoreML)",
+      "hf_repo": "FluidInference/parakeet-tdt-0.6b-v3-coreml",
+      "files": [],
+      "size_bytes": 450000000,
+      "sha256": null,
+      "runtime": "coreml",
+      "role": "stt",
+      "languages": ["en", "hi", "kn", "multilingual-25"],
+      "notes": "Primary live STT. Managed by FluidAudio's own downloader in the spike; ModelManager takes over caching in Phase 1."
+    },
+    {
+      "id": "silero-vad-coreml",
+      "display_name": "Silero VAD (CoreML)",
+      "hf_repo": "FluidInference/silero-vad-coreml",
+      "files": [],
+      "size_bytes": 2000000,
+      "sha256": null,
+      "runtime": "coreml",
+      "role": "vad",
+      "languages": ["any"],
+      "notes": "Speech-pause chunk rotation for meeting mode (Phase 4); also end-of-utterance detection for capture."
+    },
+    {
+      "id": "qwen2.5-3b-instruct-q4km",
+      "display_name": "Qwen 2.5 3B Instruct (Q4_K_M GGUF)",
+      "hf_repo": "bartowski/Qwen2.5-3B-Instruct-GGUF",
+      "files": ["Qwen2.5-3B-Instruct-Q4_K_M.gguf"],
+      "size_bytes": 1930000000,
+      "sha256": null,
+      "runtime": "llamacpp",
+      "role": "slm",
+      "languages": ["en", "hi", "multilingual"],
+      "notes": "SLM candidate A for extraction. Phase 0 eval decides between this and Gemma."
+    },
+    {
+      "id": "gemma-3-4b-it-q4km",
+      "display_name": "Gemma 3 4B IT (Q4_K_M GGUF)",
+      "hf_repo": "bartowski/google_gemma-3-4b-it-GGUF",
+      "files": ["google_gemma-3-4b-it-Q4_K_M.gguf"],
+      "size_bytes": 2500000000,
+      "sha256": null,
+      "runtime": "llamacpp",
+      "role": "slm",
+      "languages": ["en", "hi", "multilingual"],
+      "notes": "SLM candidate B for extraction."
+    },
+    {
+      "id": "whisper-large-v3-turbo-coreml",
+      "display_name": "Whisper Large v3 Turbo (CoreML)",
+      "hf_repo": "argmaxinc/whisperkit-coreml",
+      "files": [],
+      "size_bytes": 626000000,
+      "sha256": null,
+      "runtime": "coreml",
+      "role": "stt",
+      "languages": ["multilingual-99"],
+      "notes": "Optional high-accuracy post-meeting re-pass via WhisperKit (Phase 4). Not required for capture."
+    },
+    {
+      "id": "speaker-diarization-coreml",
+      "display_name": "Pyannote Speaker Diarization (CoreML)",
+      "hf_repo": "FluidInference/speaker-diarization-coreml",
+      "files": [],
+      "size_bytes": 30000000,
+      "sha256": null,
+      "runtime": "coreml",
+      "role": "diarization",
+      "languages": ["any"],
+      "notes": "Phase 4 v2: split the system-audio track into Speaker 1/2/N."
+    }
+  ]
+}
